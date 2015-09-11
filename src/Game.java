@@ -6,11 +6,13 @@ import java.util.HashMap;
  */
 public class Game {
 	Deck deck;
+    String result = "";
 	int playersAmount;
 	int runWinner = 0;
 	ArrayList<Deck> decksPlayers = new ArrayList<Deck>();
 	ArrayList<Player> players = new ArrayList<Player>();
 	HashMap<Card, Player> cardsOwners = new HashMap<Card, Player>();
+    private ArrayList<String> results = new ArrayList<String>();
 
 	public Game(Deck deck, int playersAmount) {
 		this.deck = deck;
@@ -29,18 +31,18 @@ public class Game {
 		do {
 			removeLosers(); //In each round, eliminates players without cards.
 			nextRound();
-		} while(!existWinner(   ));
-
+		} while(!existWinner() && players.size() > 0);
 		if(existWinner()){
 			System.out.println("Gano el jugador: " + players.get(0).getName());
+            results.add("========== The winner was the Player " + players.get(0).getName() +" ==========");
 		}
 	}
 
+    public ArrayList<String> Results() {
+        return this.results;
+    }
+
 	private void nextRound() {
-        //System.out.println("========================================================================");
-        //System.out.println("====Cartas antes de la ronda");
-        //System.out.println("Cantidad de Cartas del jugador 0: "+ players.get(0).remainingCards());
-        //System.out.println("Cantidad de Cartas del jugador 1: "+ players.get(1).remainingCards());
 		if (!existWinner() && players.size() > 0) {
 		    Card card;
 		    ArrayList<Card> cardsInPlay = new ArrayList<>();
@@ -53,32 +55,32 @@ public class Game {
 			    cardsInPlay.add(card);
 		    }
             Card winCard = winCard(cardsInPlay, attributeInGame);
-
-            //System.out.println("====Cartas cuando termina la ronda");
-            //System.out.println("Cantidad de Cartas del jugador 0: "+ players.get(0).remainingCards());
-            //System.out.println("Cantidad de Cartas del jugador 1: " + players.get(1).remainingCards());
 		    selectWinner(winCard, attributeInGame, cardsInPlay, null);
 	    }
+        results.add(result);
 	}
 
 
 	private void selectWinner(Card winCard, int attributeInGame, ArrayList<Card> cardsInPlay, ArrayList<Card> reward) {
 		if (winCard == null) {
+            results.add("|==> There was a tie.");
 			tiebreaker(attributeInGame,cardsInPlay);
 		}
 		else 
 		{
 			Player playerWin = cardsOwners.get(winCard);
+            result = "|==> Winning Player: " + playerWin.getName() + " |==> Winning Card: "+ winCard.getName() +" |==> Winning Attribute: " + winCard.getAttributesName(attributeInGame) +" |==> Attribute Value: " + winCard.getAttribute(attributeInGame);
             System.out.println("Jugador que gano la ronda: " + playerWin.getName());
 			runWinner = players.indexOf(playerWin);
 			saveCards(cardsInPlay);
-            if (reward != null)
+            if (reward != null) {
                 saveCards(reward);
+                results.add("|==> Winning Player: ");
+            }
 		}
 	}
 
 	private void saveCards(ArrayList<Card> cardsInPlay) {
-
         for (Card card : cardsInPlay) {
             players.get(runWinner).addCard(card);
         }
@@ -98,7 +100,7 @@ public class Game {
 			Card winCard = winCard(cardsInPlay, attributeInGame);
             selectWinner(winCard, attributeInGame, cardsInTie, cardsInPlay);
 		} else {
-            System.out.println("Empataron");
+            results.add("|==> There was a final tie.");
 		}
 	}
 
@@ -111,15 +113,10 @@ public class Game {
 	}
 
 	private boolean existWinner() {
-		return (players.size() == 1);
+        return (players.size() == 1);
 	}
 
-
 	private Card winCard(ArrayList<Card> cardInPlay, int attributeInGame) {
-		int pos = 0;
-		//System.out.println("Cartas en Juego: " + cardInPlay.size());
-		//System.out.println("card 1: "+ cardInPlay.get(pos).getName()  +", Atributo en juego: "+ cardInPlay.get(pos).getAttributesName(attributeInGame)  + ", Valor: "+ cardInPlay.get(pos).getAttribute(attributeInGame) +" Owner, Player: "+ cardsOwners.get(cardInPlay.get(pos)).getName() + " Cantidad de Atributos de la carta: " +cardInPlay.get(pos).getAttributesAmount());
-        //System.out.println("card 2: "+ cardInPlay.get(1).getName()  +", Atributo en juego: "+ cardInPlay.get(1).getAttributesName(attributeInGame)  + ", Valor: "+ cardInPlay.get(1).getAttribute(attributeInGame) +" Owner, Player: "+ cardsOwners.get(cardInPlay.get(1)).getName() + " Cantidad de Atributos de la carta: " +cardInPlay.get(1).getAttributesAmount());
 		int attributeCard1 = cardInPlay.get(0).getAttribute(attributeInGame);
 		int attributeCard2 = cardInPlay.get(1).getAttribute(attributeInGame);
 
@@ -130,15 +127,12 @@ public class Game {
                 return cardInPlay.get(1);
         else
                 return null;
-	}
-
+    }
 
 	private void removeLosers() {
-		int max = this.players.size()-1;
-		for (int i = max; i >= 0; i--) {
-			if (this.players.get(i).remainingCards() == 0) {
+		for (int i = this.players.size()-1; i >= 0; i--) {
+			if (this.players.get(i).remainingCards() == 0)
 				this.players.remove(this.players.get(i));
-			}
 		}
 	}
 }

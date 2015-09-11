@@ -12,24 +12,20 @@ public class Main {
     public static void main (String[] args) {
 
         //==========variable declaration==========
-        String attributeName;
-        int attributeValue;
-        ArrayList<Attribute> attributes = new ArrayList<Attribute>();
-        ArrayList<Attribute> attributes2 = new ArrayList<Attribute>();
         Deck heroes = new Deck();
-        String name;
         int numAttributtes;
-        ArrayList<Card> cards = new ArrayList<Card>();
-        String path = "cards.txt";
-        String[] lineArray = new String[0];
+        String path = "cartas.txt";
+        ArrayList<String> results = new ArrayList<String>();
         //==========add a card with attributes==========
         heroes.loadDeckFromFile(path);
         System.out.println("El maso es valido: "+ heroes.check());
-        //System.out.println("Cantidad de cartas: " + heroes.getQuantityCards());
         Game game = new Game(heroes,2);
         game.play();
-        
-        System.out.println("el juego termino");
-        //System.out.println(autos.getQuantityCards());
+        results = game.Results();
+        for (int i = 0; i < results.size() - 1; i++) {
+            System.out.println("==========RONDA " + i +"==========" );
+            System.out.println(results.get(i));
+        }
+        System.out.println(results.get(results.size() - 1));
     }
 }
