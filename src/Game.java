@@ -26,41 +26,42 @@ public class Game {
 		}
 		dealCards();
 	}
-
+    
+//This method will keep running until there is a winner or a final tie.
 	public void play() {
 		do {
 			removeLosers(); //In each round, eliminates players without cards.
 			nextRound();
 		} while(!existWinner() && players.size() > 0);
 		if(existWinner()){
-			System.out.println("Gano el jugador: " + players.get(0).getName());
             results.add("========== The winner was the Player " + players.get(0).getName() +" ==========");
 		}
 	}
 
+//This method is only to return the results.
     public ArrayList<String> Results() {
         return this.results;
     }
 
+    //Take the cards that hand, makes an index of card owners in a HashMap, and put the cards in an ArrayList cards in play.
+    //then calls other methods to choose the winning card, and give these cards to the winner.
 	private void nextRound() {
 		if (!existWinner() && players.size() > 0) {
 		    Card card;
 		    ArrayList<Card> cardsInPlay = new ArrayList<>();
 		    int attributeInGame = players.get(runWinner).selectAttribute();
-			System.out.println("Atributo en Juego: " + attributeInGame);
-            //cardsOwners.clear();
 		    for (Player player : players) {
 			    card = player.getCard();
 			    cardsOwners.put(card, player);
 			    cardsInPlay.add(card);
 		    }
-            Card winCard = winCard(cardsInPlay, attributeInGame);
+            Card winCard = winningCard(cardsInPlay, attributeInGame);
 		    selectWinner(winCard, attributeInGame, cardsInPlay, null);
 	    }
         results.add(result);
 	}
 
-
+//receive the win Card and search de owner of card, in case of tie, call method tiebreaker
 	private void selectWinner(Card winCard, int attributeInGame, ArrayList<Card> cardsInPlay, ArrayList<Card> reward) {
 		if (winCard == null) {
             results.add("|==> There was a tie.");
@@ -70,7 +71,6 @@ public class Game {
 		{
 			Player playerWin = cardsOwners.get(winCard);
             result = "|==> Winning Player: " + playerWin.getName() + " |==> Winning Card: "+ winCard.getName() +" |==> Winning Attribute: " + winCard.getAttributesName(attributeInGame) +" |==> Attribute Value: " + winCard.getAttribute(attributeInGame);
-            System.out.println("Jugador que gano la ronda: " + playerWin.getName());
 			runWinner = players.indexOf(playerWin);
 			saveCards(cardsInPlay);
             if (reward != null) {
@@ -80,12 +80,16 @@ public class Game {
 		}
 	}
 
+
+//Deliver the cards that was in play to winning player.
 	private void saveCards(ArrayList<Card> cardsInPlay) {
         for (Card card : cardsInPlay) {
             players.get(runWinner).addCard(card);
         }
 	}
 
+
+//Method for tie
 	private void tiebreaker(int attributeInGame, ArrayList<Card> cardsInPlay) {
 		removeLosers();
 		if(!existWinner() && players.size() > 0) {
@@ -97,13 +101,15 @@ public class Game {
 				cardsOwners.put(card,player);
 				cardsInPlay.add(card);
 			}
-			Card winCard = winCard(cardsInPlay, attributeInGame);
+			Card winCard = winningCard(cardsInPlay, attributeInGame);
             selectWinner(winCard, attributeInGame, cardsInTie, cardsInPlay);
 		} else {
             results.add("|==> There was a final tie.");
 		}
 	}
 
+
+//Deliver cards to players.
 	private void dealCards() {
 		while (deck.getQuantityCards() >= players.size()) {
 			for (int i = 0; i < players.size() ; i++) {
@@ -112,11 +118,15 @@ public class Game {
 		}
 	}
 
+
+//Returns true if the players' quantity is 1
 	private boolean existWinner() {
         return (players.size() == 1);
 	}
 
-	private Card winCard(ArrayList<Card> cardInPlay, int attributeInGame) {
+
+//Return the winning Card
+	private Card winningCard(ArrayList<Card> cardInPlay, int attributeInGame) {
 		int attributeCard1 = cardInPlay.get(0).getAttribute(attributeInGame);
 		int attributeCard2 = cardInPlay.get(1).getAttribute(attributeInGame);
 
@@ -129,6 +139,8 @@ public class Game {
                 return null;
     }
 
+
+//Eliminates players without cards.
 	private void removeLosers() {
 		for (int i = this.players.size()-1; i >= 0; i--) {
 			if (this.players.get(i).remainingCards() == 0)

@@ -11,8 +11,6 @@ public class Player {
         this.name = name;
     }
 
-   // public Player(){}
-
     public Card play() {
         if (deck.getQuantityCards() > 0) {
             return this.deck.getCard();

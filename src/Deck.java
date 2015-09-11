@@ -52,9 +52,9 @@ public class Deck {
         return 0;
     }
 
-//    public String getAttriuteName(int pos) {
- //       return (cards.get(pos).getName())
-  //  }
+    public String getAttriuteName(int pos) {
+        return (cards.get(pos).getName());
+    }
 
     public void showCard(Card card) {
         System.out.println("Cantidad de Atributos: " + card.getAttributesAmount());
@@ -99,7 +99,6 @@ public class Deck {
     }
     public boolean check() {
     	boolean aux=true;
-    	System.out.println("La cantidad de cartas son:"+ cards.size());
     	if (cards.size()>1) {
     	    Card card = cards.get(0);
     	    int cantAttr = card.getAttributesAmount();
