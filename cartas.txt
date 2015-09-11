@@ -1,0 +1,4 @@
+superman,fuerza,300,1,velocidad,500,-1,batallas,5000,1,poder,600,1
+batman,fuerza,300,1,velocidad,500,-1,batallas,5000,1,poder,600,1
+superman,fuerza,300,1,velocidad,500,-1,batallas,5000,1,poder,600,1
+batman,fuerza,300,1,velocidad,500,-1,batallas,5000,1,poder,600,1
