@@ -14,11 +14,12 @@ public class Main {
         //==========variable declaration==========
         Deck heroes = new Deck();
         int numAttributtes;
-        String path = "cartas.txt";
+        String path = "cards.txt";
         ArrayList<String> results = new ArrayList<String>();
-        //==========add a card with attributes==========
+
+        //==========play game==========
         heroes.loadDeckFromFile(path);
-        System.out.println("El maso es valido: "+ heroes.check());
+        System.out.println("Deck: "+ heroes.check());
         Game game = new Game(heroes,2);
         game.play();
         results = game.Results();

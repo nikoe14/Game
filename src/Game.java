@@ -26,7 +26,7 @@ public class Game {
 		}
 		dealCards();
 	}
-    
+
 //This method will keep running until there is a winner or a final tie.
 	public void play() {
 		do {
@@ -55,7 +55,8 @@ public class Game {
 			    cardsOwners.put(card, player);
 			    cardsInPlay.add(card);
 		    }
-            Card winCard = winningCard(cardsInPlay, attributeInGame);
+			Card winCard = cardsInPlay.get(0).winningCard(cardsInPlay.get(1),attributeInGame);
+            //Card winCard = winningCard(cardsInPlay, attributeInGame);
 		    selectWinner(winCard, attributeInGame, cardsInPlay, null);
 	    }
         results.add(result);
@@ -127,6 +128,7 @@ public class Game {
 
 //Return the winning Card
 	private Card winningCard(ArrayList<Card> cardInPlay, int attributeInGame) {
+		//return
 		int attributeCard1 = cardInPlay.get(0).getAttribute(attributeInGame);
 		int attributeCard2 = cardInPlay.get(1).getAttribute(attributeInGame);
 
@@ -138,7 +140,6 @@ public class Game {
         else
                 return null;
     }
-
 
 //Eliminates players without cards.
 	private void removeLosers() {

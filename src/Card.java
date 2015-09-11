@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Iterator;
+
 /**
  * Created by Nico on 8/26/15.
  */
@@ -20,13 +20,12 @@ public class Card {
         this.attributes = attributes;
     }
 
-
     public int getAttribute(int attribute) {
         if (!this.attributes.isEmpty()) {
         	if (this.attributes.get(attribute).getWinType()== 1)
-        		return this.attributes.get(attribute).getValor();
+        		return this.attributes.get(attribute).getValue();
         	else
-        		return (-1 * this.attributes.get(attribute).getValor());
+        		return (-1 * this.attributes.get(attribute).getValue());
         }
         else
             return -1;
@@ -48,4 +47,16 @@ public class Card {
     }
 
     public String getAttributesName(int pos) {return attributes.get(pos).getName();}
+
+    public Card winningCard(Card opponentCard, int attributeInGame) {
+        Attribute winningAttribute = opponentCard.attributes.get(attributeInGame).winningAttribute(this.attributes.get(attributeInGame));
+        if (winningAttribute == this.attributes.get(attributeInGame))
+            return this;
+        else
+            if (winningAttribute == null)
+                return null;
+        else {
+                return opponentCard;
+            }
+    }
 }

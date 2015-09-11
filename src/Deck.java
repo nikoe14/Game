@@ -84,7 +84,8 @@ public class Deck {
             e.printStackTrace();
         }
     }
-    private boolean checkAttr(ArrayList<Attribute> attr, ArrayList<Attribute> attr2){
+
+    private boolean checkAttr(ArrayList<Attribute> attr, ArrayList<Attribute> attr2) {
     	boolean error = false;
     	int i =0;
     	while (!(error)&& (i<attr.size())) {
@@ -93,10 +94,11 @@ public class Deck {
     		if (!str.equals(str2)) {
     			error=true;
     		}
-    	i++;
+    	    i++;
     	}
     	return !error;
     }
+
     public boolean check() {
     	boolean aux=true;
     	if (cards.size()>1) {
@@ -113,6 +115,6 @@ public class Deck {
     	            return aux;
 		        }
         else
-		    return false;//el maso tiene una sola carta
+		    return false;//1 card
     }
 }

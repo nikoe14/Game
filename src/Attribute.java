@@ -1,20 +1,19 @@
-import java.util.Map.Entry;
 /**
  * Created by Nico on 8/26/15.
  */
 public class Attribute {
     private String name;
-    private int valor;
+    private int value;
     private int highestWins;
 
-    public Attribute(String name, int valor, int highestWins) {
+    public Attribute(String name, int value, int highestWins) {
         this.name = name;
-        this.valor = valor;
+        this.value = value;
         this.highestWins = highestWins;
     }
 
-    public int getValor() {
-        return valor;
+    public int getValue() {
+        return value;
     }
 
     public String getName() {
@@ -28,11 +27,22 @@ public class Attribute {
     public void setWinType(int highestWins) {
         this.highestWins = highestWins;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setValor(int valor) {
-        this.valor = valor;
+    public void setValue(int valor) {
+        this.value = valor;
+    }
+
+    public Attribute winningAttribute(Attribute attribute) {
+        if ((attribute.getValue() * highestWins) > (this.value * highestWins))
+            return attribute;
+        else
+            if ((attribute.getValue() * highestWins) < (this.value * highestWins))
+                return this;
+        else
+            return null;
     }
 }
