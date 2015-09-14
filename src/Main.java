@@ -41,8 +41,3 @@ public class Main {
         }
     }
 }
-
-
-//validate deck
-//validar que no sean los atributos repetidos
-//que se manjen con otributos
