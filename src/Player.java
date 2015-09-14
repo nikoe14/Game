@@ -38,6 +38,10 @@ public class Player {
         return deck.getQuantityCards();
     }
 
+    /**
+     * randomly selects an attribute for the game.
+     * @return index's number of the array list of the attributes.
+     */
     public int selectAttribute() {
         Random randomGenerator = new Random();
         return randomGenerator.nextInt(deck.getAttributesAmount());

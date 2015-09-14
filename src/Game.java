@@ -14,6 +14,11 @@ public class Game {
 	HashMap<Card, Player> cardsOwners = new HashMap<Card, Player>();
     private ArrayList<String> results = new ArrayList<String>();
 
+	/**
+	 * Constructor of the class.
+	 * @param deck: Deck of the game.
+	 * @param playersAmount: Players of quantity.
+	 */
 	public Game(Deck deck, int playersAmount) {
 		this.deck = deck;
 		this.playersAmount = playersAmount;
@@ -27,7 +32,9 @@ public class Game {
 		dealCards();
 	}
 
-//This method will keep running until there is a winner or a final tie.
+	/**
+	 * This method will keep running until there is a winner or a final tie.
+	 */
 	public void play() {
 		do {
 			removeLosers(); //In each round, eliminates players without cards.
@@ -38,13 +45,19 @@ public class Game {
 		}
 	}
 
-//This method is only to return the results.
+	/**
+	 * This method is only to return the results.
+	 * This method isn't right, breaks the encapsulation of the class, but is only for return the results.
+	 * @return
+	 */
     public ArrayList<String> Results() {
         return this.results;
     }
 
-    //Take the cards that hand, makes an index of card owners in a HashMap, and put the cards in an ArrayList cards in play.
-    //then calls other methods to choose the winning card, and give these cards to the winner.
+	/**
+	 * Take the cards that hand, makes an index of card owners in a HashMap, and put the cards in an ArrayList cards in play.
+	 * then calls other methods to choose the winning card, and give these cards to the winner.
+	 */
 	private void nextRound() {
 		if (!existWinner() && players.size() > 0) {
 		    Card card;
@@ -62,7 +75,13 @@ public class Game {
         results.add(result);
 	}
 
-//receive the win Card and search de owner of card, in case of tie, call method tiebreaker
+	/**
+	 * Receive the win Card and search de owner of card, in case of tie, call method tiebreaker
+	 * @param winCard: the best card in the round.
+	 * @param attributeInGame: attribute in game.
+	 * @param cardsInPlay: array the cards in play.
+	 * @param reward
+	 */
 	private void selectWinner(Card winCard, int attributeInGame, ArrayList<Card> cardsInPlay, ArrayList<Card> reward) {
 		if (winCard == null) {
             results.add("|==> There was a tie.");
@@ -71,7 +90,7 @@ public class Game {
 		else 
 		{
 			Player playerWin = cardsOwners.get(winCard);
-            result = "|==> Winning Player: " + playerWin.getName() + " |==> Winning Card: "+ winCard.getName() +" |==> Winning Attribute: " + winCard.getAttributesName(attributeInGame) +" |==> Attribute Value: " + winCard.getAttribute(attributeInGame);
+            result = "|==> Winning Player: " + playerWin.getName() + " |==> Winning Card: "+ winCard.getName() +" |==> Winning Attribute: " + winCard.getAttributesName(attributeInGame) +" |==> Attribute Value: " + winCard.getAttributeValue(attributeInGame);
 			runWinner = players.indexOf(playerWin);
 			saveCards(cardsInPlay);
             if (reward != null) {
@@ -81,16 +100,21 @@ public class Game {
 		}
 	}
 
-
-//Deliver the cards that was in play to winning player.
+	/**
+	 * Deliver the cards that was in play to winning player.
+	 * @param cardsInPlay: array the cards in play.
+	 */
 	private void saveCards(ArrayList<Card> cardsInPlay) {
         for (Card card : cardsInPlay) {
             players.get(runWinner).addCard(card);
         }
 	}
 
-
-//Method for tie
+	/**
+	 * Method for tie
+	 * @param attributeInGame: attribute in game.
+	 * @param cardsInPlay: array the cards in play.
+	 */
 	private void tiebreaker(int attributeInGame, ArrayList<Card> cardsInPlay) {
 		removeLosers();
 		if(!existWinner() && players.size() > 0) {
@@ -109,8 +133,9 @@ public class Game {
 		}
 	}
 
-
-//Deliver cards to players.
+	/**
+	 * Deliver cards to players.
+	 */
 	private void dealCards() {
 		while (deck.getQuantityCards() >= players.size()) {
 			for (int i = 0; i < players.size() ; i++) {
@@ -119,18 +144,24 @@ public class Game {
 		}
 	}
 
-
-//Returns true if the players' quantity is 1
+	/**
+	 * Returns true if the players' quantity is 1.
+	 * @return
+	 */
 	private boolean existWinner() {
         return (players.size() == 1);
 	}
 
-
-//Return the winning Card
+	/**
+	 * Return the winning Card
+	 * @param cardInPlay: array the cards in play.
+	 * @param attributeInGame: attribute in play.
+	 * @return
+	 */
 	private Card winningCard(ArrayList<Card> cardInPlay, int attributeInGame) {
 		//return
-		int attributeCard1 = cardInPlay.get(0).getAttribute(attributeInGame);
-		int attributeCard2 = cardInPlay.get(1).getAttribute(attributeInGame);
+		int attributeCard1 = cardInPlay.get(0).getAttributeValue(attributeInGame);
+		int attributeCard2 = cardInPlay.get(1).getAttributeValue(attributeInGame);
 
         if (attributeCard1 > attributeCard2)
             return cardInPlay.get(0);
@@ -141,7 +172,9 @@ public class Game {
                 return null;
     }
 
-//Eliminates players without cards.
+	/**
+	 * Eliminates players without cards.
+	 */
 	private void removeLosers() {
 		for (int i = this.players.size()-1; i >= 0; i--) {
 			if (this.players.get(i).remainingCards() == 0)

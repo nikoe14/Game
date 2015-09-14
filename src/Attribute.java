@@ -36,6 +36,11 @@ public class Attribute {
         this.value = valor;
     }
 
+    /**
+     * This method return the winning attribute.
+     * @param attribute: Attribute of the opponent.
+     * @return: winning attribute
+     */
     public Attribute winningAttribute(Attribute attribute) {
         if ((attribute.getValue() * highestWins) > (this.value * highestWins))
             return attribute;

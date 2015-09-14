@@ -14,19 +14,35 @@ public class Main {
         //==========variable declaration==========
         Deck heroes = new Deck();
         int numAttributtes;
-        String path = "cards.txt";
         ArrayList<String> results = new ArrayList<String>();
+
+        /**
+         * Put in this variable ("path"), the path of the file.
+         */
+        //=========================
+        String path = "cards.txt"; //==
+        //=========================
 
         //==========play game==========
         heroes.loadDeckFromFile(path);
-        System.out.println("Deck: "+ heroes.check());
-        Game game = new Game(heroes,2);
-        game.play();
-        results = game.Results();
-        for (int i = 0; i < results.size() - 1; i++) {
-            System.out.println("==========RONDA " + i +"==========" );
-            System.out.println(results.get(i));
+
+        if (heroes.check()) {
+            System.out.println("Valid Deck: " + heroes.check());
+            Game game = new Game(heroes, 2);
+            game.play();
+            results = game.Results();
+            for (int i = 0; i < results.size() - 1; i++) {
+                System.out.println("==========ROUND " + i + "==========");
+                System.out.println(results.get(i));
+            }
+            System.out.println(results.get(results.size() - 1));
+        } else {
+            System.out.println("Valid Deck: " + heroes.check());
         }
-        System.out.println(results.get(results.size() - 1));
     }
 }
+
+
+//validate deck
+//validar que no sean los atributos repetidos
+//que se manjen con otributos

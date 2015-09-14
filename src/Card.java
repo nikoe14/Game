@@ -20,7 +20,12 @@ public class Card {
         this.attributes = attributes;
     }
 
-    public int getAttribute(int attribute) {
+    /**
+     *
+     * @param attribute: attribute in game.
+     * @return the attribute selected for the player.
+     */
+    public int getAttributeValue(int attribute) {
         if (!this.attributes.isEmpty()) {
         	if (this.attributes.get(attribute).getWinType()== 1)
         		return this.attributes.get(attribute).getValue();
@@ -31,6 +36,11 @@ public class Card {
             return -1;
     }
 
+    /**
+     *
+     * @param attribute
+     * @return attribute in game
+     */
     public int getAttributeCondition(int attribute) {
         if (!this.attributes.isEmpty()) {
             return this.attributes.get(attribute).getWinType();
@@ -38,6 +48,10 @@ public class Card {
             return 1;
     }
 
+    /**
+     * This method isn't right, breaks the encapsulation of the class. We didn't have time for fix it.
+     * @return
+     */
     public ArrayList<Attribute> getAttributes() {
         return this.attributes;
     }
@@ -48,6 +62,12 @@ public class Card {
 
     public String getAttributesName(int pos) {return attributes.get(pos).getName();}
 
+    /**
+     * Return the winning card.
+     * @param opponentCard: The opponent's card.
+     * @param attributeInGame: attribute in game.
+     * @return
+     */
     public Card winningCard(Card opponentCard, int attributeInGame) {
         Attribute winningAttribute = opponentCard.attributes.get(attributeInGame).winningAttribute(this.attributes.get(attributeInGame));
         if (winningAttribute == this.attributes.get(attributeInGame))
