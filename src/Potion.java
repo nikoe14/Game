@@ -8,7 +8,11 @@ public abstract class Potion {
     public Potion(String name) {
         this.name = name;
     }
-
+    /**
+     * This method modify the value in game with the potion's value.
+     * @param attribute
+     * @return
+     */
     public abstract Attribute modify(Attribute attributes);
 
     public abstract Attribute getModifiedValue(Attribute attributes);

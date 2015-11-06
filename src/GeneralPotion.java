@@ -2,7 +2,9 @@
  * Created by Nico on 11/1/15.
  */
 public class GeneralPotion extends Potion {
-
+    /**
+     * This potion, affect equally to all attributes of the card.
+     */
     private double value;
 
     public GeneralPotion(String name, double value) {
@@ -14,10 +16,19 @@ public class GeneralPotion extends Potion {
         return value;
     }
 
+    /**
+     * This method set the potion's value.
+     * @param value
+     */
     public void setValue(double value) {
         this.value = value;
     }
 
+    /**
+     * This method modify the value in game with the potion's value.
+     * @param attribute
+     * @return
+     */
     public Attribute modify(Attribute attribute) {
         return getModifiedValue(attribute);
     }

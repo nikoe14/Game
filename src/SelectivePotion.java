@@ -2,7 +2,9 @@
  * Created by Nico on 11/1/15.
  */
 public class SelectivePotion extends Potion{
-
+    /**
+     * This potion, only affects a single target.
+     */
     private String target;
     private double value;
 
@@ -11,7 +13,11 @@ public class SelectivePotion extends Potion{
         this.target = target;
         this.value = value;
     }
-
+    /**
+     * This method modify the value in game with the potion's value.
+     * @param attribute
+     * @return
+     */
     public Attribute modify(Attribute attribute) {
         return getModifiedValue(attribute);
     }
