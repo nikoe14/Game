@@ -8,7 +8,6 @@ public class Main {
 
         //==========variable declaration==========
         Deck heroes = new Deck();
-        //int numAttributtes;
         ArrayList<String> results = new ArrayList<String>();
         ArrayList<Potion> potions = new ArrayList<Potion>();
         /**
@@ -83,12 +82,11 @@ public class Main {
 
         //==========play game==========
         heroes.loadDeckFromFile(path);
-        heroes.getQuantityCards();
         Game game = new Game(heroes,potions, 2);
         game.play();
         results = game.getResults();
         for (int i = 0; i < results.size() - 1; i++) {
-            System.out.println("==========ROUND " + i + "==========");
+            System.out.println("==========ROUND " + (i + 1) + "==========");
             System.out.println(results.get(i));
         }
         System.out.println(results.get(results.size() - 1));

@@ -31,7 +31,7 @@ public class Game {
 		for (int i = 0; i < playersAmount; i++) {
 			Deck newDeck = new Deck();
 			decksPlayers.add(newDeck);
-			Player newPlayer = new Player(decksPlayers.get(i), Integer.toString(i));
+			Player newPlayer = new Player(decksPlayers.get(i), Integer.toString(i + 1));
 			players.add(newPlayer);
 		}
 		dealCards();
@@ -84,9 +84,10 @@ public class Game {
 				runWinner = confrontation(attributeInGame);
 
 				if (runWinner != null) {
-					result = "|==> Winning Player: " + runWinner.getName();
+					result = "|==> Winning Player: " + runWinner.getName() + "\n";
+					result += runWinner.getCard().toString();
 				} else {
-					result = "|==> Empataron ";
+					result = "|==> They tied";
 				}
 
 				for (Player player : this.players) {

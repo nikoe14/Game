@@ -77,6 +77,7 @@ public class Card {
         return this.attributes;
     }
 
+    @Override
     public boolean equals(Object cardCompare) {
         Card cardCompared = (Card)cardCompare;
         if ((!this.name.equals(cardCompared.getName())) &&
@@ -101,7 +102,6 @@ public class Card {
         return this.potion;
     }
 
-
     @Override
     public String toString() {
         String string = this.name;
@@ -115,8 +115,8 @@ public class Card {
         for (int i = 0; i < this.attributes.size(); i++) {
             string += "[" + this.attributes.get(i).getName() + ": ";
             string += this.attributes.get(i).getValue() + "]";
-            if (i != this.attributes.size()) {
-                string += ",";
+            if (i != this.attributes.size() - 1) {
+                string += ", ";
             }
         }
 
