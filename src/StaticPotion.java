@@ -15,7 +15,7 @@ public class StaticPotion extends Potion {
     public ArrayList<Attribute> modify(ArrayList<Attribute> attributes) {
         ArrayList<Attribute> newAttributes = new ArrayList<Attribute>();
         for(Attribute attribute : attributes) {
-            Attribute newAttribute = new Attribute(attribute.getName(),(attribute.getValue()*1.2),attribute.getWinType());
+            Attribute newAttribute = new Attribute(attribute.getName(),value,attribute.getWinType());
             newAttributes.add(newAttribute);
         }
         return newAttributes;

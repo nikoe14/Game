@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.jar.Attributes;
 
 /**
  * Created by Nico on 8/26/15.
@@ -92,5 +91,13 @@ public class Card {
             return false;
         }
         return true;
+    }
+
+    public void setPotion(Potion potion) {
+        this.potion = potion;
+    }
+
+    public Potion getPotion(Potion potion) {
+        return this.potion;
     }
 }
