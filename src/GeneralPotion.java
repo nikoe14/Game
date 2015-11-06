@@ -12,6 +12,14 @@ public class GeneralPotion extends Potion {
         this.value = value;
     }
 
+    public double getValue() {
+        return value;
+    }
+
+    public void setValue(double value) {
+        this.value = value;
+    }
+
     public ArrayList<Attribute> modify(ArrayList<Attribute> attributes) {
         ArrayList<Attribute> newAttributes = new ArrayList<Attribute>();
         for(Attribute attribute : attributes) {

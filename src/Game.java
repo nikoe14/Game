@@ -59,7 +59,7 @@ public class Game {
 	 *
 	 * @return
 	 */
-	public ArrayList<String> Results() {
+	public ArrayList<String> getResults() {
 		return this.results;
 	}
 

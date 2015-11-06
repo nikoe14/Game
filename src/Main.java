@@ -7,7 +7,7 @@ public class Main {
 
         //==========variable declaration==========
         Deck heroes = new Deck();
-        int numAttributtes;
+        //int numAttributtes;
         ArrayList<String> results = new ArrayList<String>();
 
         /**
@@ -22,7 +22,7 @@ public class Main {
         heroes.getQuantityCards();
         Game game = new Game(heroes, 2);
         game.play();
-        results = game.Results();
+        results = game.getResults();
         for (int i = 0; i < results.size() - 1; i++) {
             System.out.println("==========ROUND " + i + "==========");
             System.out.println(results.get(i));
