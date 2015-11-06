@@ -43,13 +43,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GeneralPotion.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GeneralPotion.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GeneralPotion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.58474576">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
-                <element signature="e#376#387#0" expanded="true" />
+                <element signature="e#382#393#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,10 +120,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CocktailPotion.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CocktailPotion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CocktailPotion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6101695">
+            <state vertical-scroll-proportion="0.0">
               <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
               <folding>
                 <element signature="e#308#309#0" expanded="true" />
@@ -197,6 +197,7 @@
         <option value="$PROJECT_DIR$/src/InnocuousPotion.java" />
         <option value="$PROJECT_DIR$/src/Card.java" />
         <option value="$PROJECT_DIR$/src/CocktailPotion.java" />
+        <option value="$PROJECT_DIR$/src/GeneralPotion.java" />
       </list>
     </option>
   </component>
@@ -644,12 +645,12 @@
       <workItem from="1446642903240" duration="2533000" />
       <workItem from="1446647472754" duration="310000" />
       <workItem from="1446651940671" duration="7484000" />
-      <workItem from="1446685807506" duration="17095000" />
+      <workItem from="1446685807506" duration="17173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151631000" />
+    <option name="totallyTimeSpent" value="151709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="0" />
@@ -1154,16 +1155,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GeneralPotion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-          <folding>
-            <element signature="e#376#387#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.4814816">
@@ -1217,12 +1208,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CocktailPotion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6101695">
+        <state vertical-scroll-proportion="0.0">
           <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding>
             <element signature="e#308#309#0" expanded="true" />
             <element signature="e#353#354#0" expanded="true" />
             <element signature="e#488#499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GeneralPotion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58474576">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#382#393#0" expanded="true" />
           </folding>
         </state>
       </provider>
