@@ -12,16 +12,28 @@ public class LimitedPotion extends GeneralPotion {
         this.counter = 2;
     }
 
-    public ArrayList<Attribute> modify(ArrayList<Attribute> attributes) {
+    public Attribute modify(Attribute attribute) {
         if (this.counter != 0) {
             if (this.counter == 2) {
-                return super.modify(attributes);
+                return super.modify(attribute);
             } else if (this.counter == 1) {
                 this.setValue(10);
-                return super.modify(attributes);
+                return super.modify(attribute);
             }
             --this.counter;
         }
-        return attributes;
+        return attribute;
+    }
+
+    public Attribute showStatus(Attribute attribute) {
+        if (this.counter != 0) {
+            if (this.counter == 2) {
+                return super.modify(attribute);
+            } else if (this.counter == 1) {
+                this.setValue(10);
+                return super.modify(attribute);
+            }
+        }
+        return attribute;
     }
 }

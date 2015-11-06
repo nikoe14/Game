@@ -67,10 +67,10 @@ public class Card {
      * @return
      */
     public int confrontation(Card opponentCard, int attributeInGame) {
-        ArrayList<Attribute> attributesOpponent = potion.modify(opponentCard.getAttributes());
-        ArrayList<Attribute> cardAttributesModify = potion.modify(this.getAttributes());
+        Attribute attributeOpponent = potion.modify(opponentCard.getAttributes().get(attributeInGame));
+        Attribute cardAttributeModify = potion.modify(this.getAttributes().get(attributeInGame));
         //return opponentCard.attributes.get(attributeInGame).confrontation(this.attributes.get(attributeInGame));
-        return attributesOpponent.get(attributeInGame).confrontation(cardAttributesModify.get(attributeInGame));
+        return attributeOpponent.confrontation(cardAttributeModify);
     }
 
     public ArrayList<Attribute> getAttributes(){
@@ -101,6 +101,8 @@ public class Card {
         return this.potion;
     }
 
+
+    @Override
     public String toString() {
         String string = this.name;
 

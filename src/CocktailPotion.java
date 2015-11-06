@@ -15,12 +15,12 @@ public class CocktailPotion extends Potion {
         this.potions.add(potionToAdd);
     }
 
-    public ArrayList<Attribute> modify(ArrayList<Attribute> attributes) {
-        ArrayList<Attribute> newAttributes = new ArrayList<Attribute>();
+    public Attribute modify(Attribute attribute) {
+        Attribute newAttribute = new Attribute(attribute.getName(),attribute.getValue(),attribute.getWinType());
         if (potions !=null) {
             for (Potion potion : potions)
-                potion.modify(newAttributes);
+                potion.modify(newAttribute);
         }
-        return newAttributes;
+        return newAttribute;
     }
 }

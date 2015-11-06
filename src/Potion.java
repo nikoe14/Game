@@ -15,7 +15,7 @@ public abstract class Potion {
         this.fixedValue = 0;
     }
 
-    public abstract ArrayList<Attribute> modify(ArrayList<Attribute> attributes);
+    public abstract Attribute modify(Attribute attributes);
 
     public void setName(String name) {
         this.name = name;

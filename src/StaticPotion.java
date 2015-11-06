@@ -12,12 +12,8 @@ public class StaticPotion extends Potion {
         this.value = value;
     }
 
-    public ArrayList<Attribute> modify(ArrayList<Attribute> attributes) {
-        ArrayList<Attribute> newAttributes = new ArrayList<Attribute>();
-        for(Attribute attribute : attributes) {
-            Attribute newAttribute = new Attribute(attribute.getName(),value,attribute.getWinType());
-            newAttributes.add(newAttribute);
-        }
-        return newAttributes;
+    public Attribute modify(Attribute attribute) {
+        Attribute newAttribute = new Attribute(attribute.getName(),value,attribute.getWinType());
+        return newAttribute;
     }
 }

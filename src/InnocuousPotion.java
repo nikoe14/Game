@@ -9,7 +9,7 @@ public class InnocuousPotion extends Potion {
         super("Innocuous");
     }
 
-    public ArrayList<Attribute> modify(ArrayList<Attribute> attributes) {
-        return attributes;
+    public Attribute modify(Attribute attribute) {
+        return attribute;
     }
 }
