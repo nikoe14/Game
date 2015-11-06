@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Created by Nico on 11/6/15.
  */
@@ -13,7 +11,6 @@ public class StaticPotion extends Potion {
     }
 
     public Attribute modify(Attribute attribute) {
-        Attribute newAttribute = new Attribute(attribute.getName(),value,attribute.getWinType());
-        return newAttribute;
+        return new Attribute(attribute.getName(), value, attribute.getWinType());
     }
 }

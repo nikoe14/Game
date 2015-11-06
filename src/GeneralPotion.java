@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Created by Nico on 11/1/15.
  */
@@ -21,10 +19,8 @@ public class GeneralPotion extends Potion {
     }
 
     public Attribute modify(Attribute attribute) {
-        Attribute newAttribute = new Attribute(attribute.getName(),attribute.getValue(),attribute.getWinType());
         double attributeValue = attribute.getValue();
-        double valueToApply = (attributeValue * (value/100));
-        newAttribute = new Attribute(attribute.getName(),(attribute.getValue() + valueToApply),attribute.getWinType());
-        return newAttribute;
+        double valueToApply = (attributeValue * (value / 100));
+        return new Attribute(attribute.getName(), (attribute.getValue() + valueToApply), attribute.getWinType());
     }
 }

@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-
 /**
  * Created by Nico on 11/1/15.
  */
-
 public class SelectivePotion extends Potion{
 
     private String target;
@@ -16,12 +13,10 @@ public class SelectivePotion extends Potion{
     }
 
     public Attribute modify(Attribute attribute) {
-        if (attribute.getName() == target) {
-            Attribute newAttribute = new Attribute(attribute.getName(), attribute.getValue(), attribute.getWinType());
+        if (attribute.getName().equals(target)) {
             double attributeValue = attribute.getValue();
             double valueToApply = (attributeValue * (value / 100));
-            newAttribute = new Attribute(attribute.getName(), (attribute.getValue() + valueToApply), attribute.getWinType());
-            return newAttribute;
+            return new Attribute(attribute.getName(), (attribute.getValue() + valueToApply), attribute.getWinType());
         } else
             return attribute;
     }

@@ -16,10 +16,10 @@ public class CocktailPotion extends Potion {
     }
 
     public Attribute modify(Attribute attribute) {
-        Attribute newAttribute = new Attribute(attribute.getName(),attribute.getValue(),attribute.getWinType());
-        if (potions !=null) {
+        Attribute newAttribute = new Attribute(attribute.getName(), attribute.getValue(), attribute.getWinType());
+        if (potions != null) {
             for (Potion potion : potions)
-                potion.modify(newAttribute);
+                newAttribute = potion.modify(newAttribute);
         }
         return newAttribute;
     }

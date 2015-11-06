@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Created by Mati on 06/11/2015.
  */
@@ -12,6 +10,7 @@ public class LimitedPotion extends GeneralPotion {
         this.counter = 2;
     }
 
+    @Override
     public Attribute modify(Attribute attribute) {
         if (this.counter != 0) {
             if (this.counter == 2) {
