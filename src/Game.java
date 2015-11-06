@@ -6,10 +6,8 @@ import java.util.Random;
  */
 public class Game {
 	Deck deck;
-	String result;
 	int playersAmount;
-	Player runWinner;
-	ArrayList<Deck> decksPlayers;
+	Player roundWinner;
 	ArrayList<Player> players;
 	ArrayList<Potion> potions;
 	private ArrayList<String> results;
@@ -23,16 +21,13 @@ public class Game {
 	public Game(Deck deck, ArrayList<Potion> potions, int playersAmount) {
 		this.deck = deck;
 		this.potions = potions;
-		result = "";
 		this.playersAmount = playersAmount;
-		this.runWinner = null;
-		this.decksPlayers = new ArrayList<Deck>();
+		this.roundWinner = null;
 		this.players = new ArrayList<Player>();
 		this.results = new ArrayList<String>();
 		for (int i = 0; i < playersAmount; i++) {
 			Deck newDeck = new Deck();
-			decksPlayers.add(newDeck);
-			Player newPlayer = new Player(decksPlayers.get(i), Integer.toString(i + 1));
+			Player newPlayer = new Player(newDeck, Integer.toString(i + 1));
 			players.add(newPlayer);
 		}
 		dealCardsAndPotions();
@@ -71,22 +66,23 @@ public class Game {
 	 */
 	private void nextRound() {
 		Card card;
+		String result;
 		ArrayList<Card> cardsInPlay = new ArrayList<>();
 
-		if (this.runWinner == null) {
-			runWinner = this.players.get(0);
+		if (this.roundWinner == null) {
+			roundWinner = this.players.get(0);
 		}
 
-		int attributeInGame = runWinner.selectAttribute();
+		int attributeInGame = roundWinner.selectAttribute();
 
 		do {
 			removeLosers();
 			if (!existWinner() && players.size() > 0) {
-				runWinner = confrontation(attributeInGame);
+				roundWinner = confrontation(attributeInGame);
 
-				if (runWinner != null) {
-					result = "|==> Winning Player: " + runWinner.getName() + "\n";
-					result += runWinner.getCard().toString();
+				if (roundWinner != null) {
+					result = "|==> Winning Player: " + roundWinner.getName() + "\n";
+					result += roundWinner.getCard().toString();
 				} else {
 					result = "|==> They tied";
 				}
@@ -99,8 +95,8 @@ public class Game {
 					player.removeCard();
 				}
 			} else return;
-		} while (this.runWinner == null);
-		runWinner.saveCards(cardsInPlay);
+		} while (this.roundWinner == null);
+		roundWinner.saveCards(cardsInPlay);
 
 		results.add(result);
 	}
