@@ -16,6 +16,10 @@ public class CocktailPotion extends Potion {
     }
 
     public Attribute modify(Attribute attribute) {
+        return getModifiedValue(attribute);
+    }
+
+    public Attribute getModifiedValue(Attribute attribute) {
         Attribute newAttribute = new Attribute(attribute.getName(), attribute.getValue(), attribute.getWinType());
         if (potions != null) {
             for (Potion potion : potions)

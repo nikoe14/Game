@@ -8,6 +8,10 @@ public class InnocuousPotion extends Potion {
     }
 
     public Attribute modify(Attribute attribute) {
+        return getModifiedValue(attribute);
+    }
+
+    public Attribute getModifiedValue(Attribute attribute) {
         return attribute;
     }
 }

@@ -27,6 +27,7 @@ public class Player {
     public String getName(){
     	return name;
     }
+
     public void addCard(Card card) {
         this.deck.addCard(card);
     }

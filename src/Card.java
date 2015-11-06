@@ -69,7 +69,6 @@ public class Card {
     public int confrontation(Card opponentCard, int attributeInGame) {
         Attribute attributeOpponent = potion.modify(opponentCard.getAttributes().get(attributeInGame));
         Attribute cardAttributeModify = potion.modify(this.getAttributes().get(attributeInGame));
-        //return opponentCard.attributes.get(attributeInGame).confrontation(this.attributes.get(attributeInGame));
         return attributeOpponent.confrontation(cardAttributeModify);
     }
 
@@ -113,8 +112,10 @@ public class Card {
         string += ": {";
 
         for (int i = 0; i < this.attributes.size(); i++) {
-            string += "[" + this.attributes.get(i).getName() + ": ";
-            string += this.attributes.get(i).getValue() + "]";
+            Attribute attrModified = potion.getModifiedValue(this.attributes.get(i));
+
+            string += "[" + attrModified.getName() + ": ";
+            string += attrModified.getValue() + "]";
             if (i != this.attributes.size() - 1) {
                 string += ", ";
             }

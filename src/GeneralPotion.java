@@ -19,6 +19,10 @@ public class GeneralPotion extends Potion {
     }
 
     public Attribute modify(Attribute attribute) {
+        return getModifiedValue(attribute);
+    }
+
+    public Attribute getModifiedValue(Attribute attribute) {
         double attributeValue = attribute.getValue();
         double valueToApply = (attributeValue * (value / 100));
         return new Attribute(attribute.getName(), (attribute.getValue() + valueToApply), attribute.getWinType());

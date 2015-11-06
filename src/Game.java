@@ -113,7 +113,11 @@ public class Game {
 			for (int i = 0; i < players.size(); i++) {
 				Random randomGenerator = new Random();
 				Card newCard = deck.getCard();
-				newCard.setPotion(potions.get(randomGenerator.nextInt(potions.size())));
+				if (potions.size() > 0) {
+					int randomPotion = randomGenerator.nextInt(potions.size());
+					newCard.setPotion(potions.get(randomPotion));
+					potions.remove(randomPotion);
+				}
 				players.get(i).addCard(newCard);
 				deck.removeCard();
 			}

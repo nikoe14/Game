@@ -1,5 +1,3 @@
-import com.sun.tools.doclint.HtmlTag;
-
 /**
  * Created by Nico on 8/26/15.
  */
@@ -54,6 +52,7 @@ public class Attribute {
         else
             return 0;
     }
+
     public boolean equals(Object attributeToVerify) {
         Attribute attribute = (Attribute)attributeToVerify;
         return this.name.equals(attribute.getName());

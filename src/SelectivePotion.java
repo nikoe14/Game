@@ -13,6 +13,10 @@ public class SelectivePotion extends Potion{
     }
 
     public Attribute modify(Attribute attribute) {
+        return getModifiedValue(attribute);
+    }
+
+    public Attribute getModifiedValue(Attribute attribute) {
         if (attribute.getName().equals(target)) {
             double attributeValue = attribute.getValue();
             double valueToApply = (attributeValue * (value / 100));
