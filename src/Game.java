@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by Nico on 8/30/15.
@@ -34,7 +35,7 @@ public class Game {
 			Player newPlayer = new Player(decksPlayers.get(i), Integer.toString(i + 1));
 			players.add(newPlayer);
 		}
-		dealCards();
+		dealCardsAndPotions();
 	}
 
 	/**
@@ -107,10 +108,13 @@ public class Game {
 	/**
 	 * Deliver cards to players.
 	 */
-	private void dealCards() {
+	private void dealCardsAndPotions() {
 		while (deck.getQuantityCards() >= players.size()) {
 			for (int i = 0; i < players.size(); i++) {
-				players.get(i).addCard(deck.getCard());
+				Random randomGenerator = new Random();
+				Card newCard = deck.getCard();
+				newCard.setPotion(potions.get(randomGenerator.nextInt(potions.size())));
+				players.get(i).addCard(newCard);
 				deck.removeCard();
 			}
 		}

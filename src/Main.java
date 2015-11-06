@@ -41,13 +41,13 @@ public class Main {
         /**
          * Load Selective Potions .
          */
-        SelectivePotion newSelectivePotion1 = new SelectivePotion("Selective","Fuerza", 20);
+        SelectivePotion newSelectivePotion1 = new SelectivePotion("Selective","fuerza", 20);
         potions.add(newSelectivePotion1);
-        SelectivePotion newSelectivePotion2 = new SelectivePotion("Selective","Velocidad", 20);
+        SelectivePotion newSelectivePotion2 = new SelectivePotion("Selective","velocidad", 20);
         potions.add(newSelectivePotion2);
-        SelectivePotion newSelectivePotion3 = new SelectivePotion("Selective","Poder", 20);
+        SelectivePotion newSelectivePotion3 = new SelectivePotion("Selective","peleasganadas", 20);
         potions.add(newSelectivePotion3);
-        SelectivePotion newSelectivePotion4 = new SelectivePotion("Selective","Fuerza", 20);
+        SelectivePotion newSelectivePotion4 = new SelectivePotion("Selective","peso", 20);
         potions.add(newSelectivePotion4);
         /**
          * Load Static Potions.
