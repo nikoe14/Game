@@ -19,8 +19,9 @@ public class Game {
 	 * @param deck:          Deck of the game.
 	 * @param playersAmount: Players of quantity.
 	 */
-	public Game(Deck deck, int playersAmount) {
+	public Game(Deck deck, ArrayList<Potion> potions, int playersAmount) {
 		this.deck = deck;
+		this.potions = potions;
 		result = "";
 		this.playersAmount = playersAmount;
 		this.runWinner = null;

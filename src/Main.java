@@ -84,7 +84,7 @@ public class Main {
         //==========play game==========
         heroes.loadDeckFromFile(path);
         heroes.getQuantityCards();
-        Game game = new Game(heroes, 2);
+        Game game = new Game(heroes,potions, 2);
         game.play();
         results = game.getResults();
         for (int i = 0; i < results.size() - 1; i++) {
