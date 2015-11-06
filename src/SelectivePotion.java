@@ -5,7 +5,9 @@ import java.util.ArrayList;
  */
 
 public class SelectivePotion extends Potion{
-
+    /**
+     * This potion, only affects a single target.
+     */
     private String target;
     private double value;
 
@@ -14,7 +16,11 @@ public class SelectivePotion extends Potion{
         this.target = target;
         this.value = value;
     }
-
+    /**
+     * This method modify the value in game with the potion's value.
+     * @param attribute
+     * @return
+     */
     public Attribute modify(Attribute attribute) {
         if (attribute.getName() == target) {
             Attribute newAttribute = new Attribute(attribute.getName(), attribute.getValue(), attribute.getWinType());

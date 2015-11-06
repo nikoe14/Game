@@ -14,7 +14,11 @@ public abstract class Potion {
         this.name = name;
         this.fixedValue = 0;
     }
-
+    /**
+     * This method modify the value in game with the potion's value.
+     * @param attribute
+     * @return
+     */
     public abstract Attribute modify(Attribute attributes);
 
     public void setName(String name) {

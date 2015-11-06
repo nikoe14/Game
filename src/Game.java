@@ -106,7 +106,7 @@ public class Game {
 	}
 
 	/**
-	 * Deliver cards to players.
+	 * Deliver cards and potions to players.
 	 */
 	private void dealCardsAndPotions() {
 		while (deck.getQuantityCards() >= players.size()) {
@@ -143,6 +143,11 @@ public class Game {
 		}
 	}
 
+	/**
+	 * This method faced 2 players and returns the winner.
+	 * @param attributeInGame
+	 * @return
+	 */
 	private Player confrontation(int attributeInGame) {
 		Card cardPlayer1 = players.get(0).getCard();
 		Card cardPlayer2 = players.get(1).getCard();

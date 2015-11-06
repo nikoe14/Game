@@ -11,7 +11,11 @@ public class LimitedPotion extends GeneralPotion {
         super(name, 20);
         this.counter = 2;
     }
-
+    /**
+     * This method modify the value in game with the potion's value.
+     * @param attribute
+     * @return
+     */
     public Attribute modify(Attribute attribute) {
         if (this.counter != 0) {
             if (this.counter == 2) {
@@ -24,7 +28,11 @@ public class LimitedPotion extends GeneralPotion {
         }
         return attribute;
     }
-
+    /**
+     * This method modify the value in game with the potion's value, but is used just for consult the actual value.
+     * @param attribute
+     * @return
+     */
     public Attribute showStatus(Attribute attribute) {
         if (this.counter != 0) {
             if (this.counter == 2) {
