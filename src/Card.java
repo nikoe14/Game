@@ -100,4 +100,26 @@ public class Card {
     public Potion getPotion(Potion potion) {
         return this.potion;
     }
+
+    public String toString() {
+        String string = this.name;
+
+        if (this.potion != null) {
+            string += " <" + this.potion.getName() + ">";
+        }
+
+        string += ": {";
+
+        for (int i = 0; i < this.attributes.size(); i++) {
+            string += "[" + this.attributes.get(i).getName() + ": ";
+            string += this.attributes.get(i).getValue() + "]";
+            if (i != this.attributes.size()) {
+                string += ",";
+            }
+        }
+
+        string += "}";
+
+        return string;
+    }
 }
