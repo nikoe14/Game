@@ -11,6 +11,7 @@ public class Card {
 
     public Card(){
         attributes = new ArrayList<Attribute>();
+        potion = new InnocuousPotion();
     }
     public void setName(String name) {
         this.name = name;
@@ -67,7 +68,10 @@ public class Card {
      * @return
      */
     public int confrontation(Card opponentCard, int attributeInGame) {
-        return opponentCard.attributes.get(attributeInGame).confrontation(this.attributes.get(attributeInGame));
+        ArrayList<Attribute> attributesOpponent = potion.modify(opponentCard.getAttributes());
+        ArrayList<Attribute> cardAttributesModify = potion.modify(this.getAttributes());
+        //return opponentCard.attributes.get(attributeInGame).confrontation(this.attributes.get(attributeInGame));
+        return attributesOpponent.get(attributeInGame).confrontation(cardAttributesModify.get(attributeInGame));
     }
 
     public ArrayList<Attribute> getAttributes(){
