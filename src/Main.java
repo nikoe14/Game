@@ -25,19 +25,14 @@ public class Main {
 
         //==========play game==========
         heroes.loadDeckFromFile(path);
-
-        if (heroes.check()) {
-            System.out.println("Valid Deck: " + heroes.check());
-            Game game = new Game(heroes, 2);
-            game.play();
-            results = game.Results();
-            for (int i = 0; i < results.size() - 1; i++) {
-                System.out.println("==========ROUND " + i + "==========");
-                System.out.println(results.get(i));
-            }
-            System.out.println(results.get(results.size() - 1));
-        } else {
-            System.out.println("Valid Deck: " + heroes.check());
+        heroes.getQuantityCards();
+        Game game = new Game(heroes, 2);
+        game.play();
+        results = game.Results();
+        for (int i = 0; i < results.size() - 1; i++) {
+            System.out.println("==========ROUND " + i + "==========");
+            System.out.println(results.get(i));
         }
+        System.out.println(results.get(results.size() - 1));
     }
 }

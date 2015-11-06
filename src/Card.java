@@ -1,13 +1,17 @@
 import java.util.ArrayList;
+import java.util.jar.Attributes;
 
 /**
  * Created by Nico on 8/26/15.
  */
 public class Card {
     private String name;
-    private ArrayList<Attribute> attributes = new ArrayList<Attribute>();
-    public Card() {}
+    private ArrayList<Attribute> attributes;
+    private Potion potion;
 
+    public Card(){
+        attributes = new ArrayList<Attribute>();
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -25,7 +29,7 @@ public class Card {
      * @param attribute: attribute in game.
      * @return the attribute selected for the player.
      */
-    public int getAttributeValue(int attribute) {
+    public double getAttributeValue(int attribute) {
         if (!this.attributes.isEmpty()) {
         	if (this.attributes.get(attribute).getWinType()== 1)
         		return this.attributes.get(attribute).getValue();
@@ -48,19 +52,13 @@ public class Card {
             return 1;
     }
 
-    /**
-     * This method isn't right, breaks the encapsulation of the class. We didn't have time for fix it.
-     * @return
-     */
-    public ArrayList<Attribute> getAttributes() {
-        return this.attributes;
-    }
-
     public int getAttributesAmount() {
         return attributes.size();
     }
 
-    public String getAttributesName(int pos) {return attributes.get(pos).getName();}
+    public String getAttributeName(int pos) {
+        return attributes.get(pos).getName();
+    }
 
     /**
      * Return the winning card.
@@ -68,15 +66,27 @@ public class Card {
      * @param attributeInGame: attribute in game.
      * @return
      */
-    public Card winningCard(Card opponentCard, int attributeInGame) {
-        Attribute winningAttribute = opponentCard.attributes.get(attributeInGame).winningAttribute(this.attributes.get(attributeInGame));
-        if (winningAttribute == this.attributes.get(attributeInGame))
-            return this;
-        else
-            if (winningAttribute == null)
-                return null;
-        else {
-                return opponentCard;
+    public int confrontation(Card opponentCard, int attributeInGame) {
+        return opponentCard.attributes.get(attributeInGame).confrontation(this.attributes.get(attributeInGame));
+    }
+
+    public ArrayList<Attribute> getAttributes(){
+        return this.attributes;
+    }
+
+    public boolean equals(Object cardCompare) {
+        Card cardCompared = (Card)cardCompare;
+        if ((!this.name.equals(cardCompared.getName())) &&
+                (this.getAttributesAmount() == cardCompared.getAttributesAmount())) {
+            ArrayList<Attribute> attributes = cardCompared.getAttributes();
+            for (Attribute attribute : attributes) {
+                if (!this.attributes.contains(attribute)) {
+                    return false;
+                }
             }
+        } else {
+            return false;
+        }
+        return true;
     }
 }

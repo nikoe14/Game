@@ -1,18 +1,20 @@
+import com.sun.tools.doclint.HtmlTag;
+
 /**
  * Created by Nico on 8/26/15.
  */
 public class Attribute {
     private String name;
-    private int value;
+    private double value;
     private int highestWins;
 
-    public Attribute(String name, int value, int highestWins) {
+    public Attribute(String name, double value, int highestWins) {
         this.name = name;
         this.value = value;
         this.highestWins = highestWins;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
@@ -32,7 +34,7 @@ public class Attribute {
         this.name = name;
     }
 
-    public void setValue(int valor) {
+    public void setValue(double valor) {
         this.value = valor;
     }
 
@@ -41,13 +43,19 @@ public class Attribute {
      * @param attribute: Attribute of the opponent.
      * @return: winning attribute
      */
-    public Attribute winningAttribute(Attribute attribute) {
-        if ((attribute.getValue() * highestWins) > (this.value * highestWins))
-            return attribute;
+    public int confrontation(Attribute attribute) {
+        if ((attribute.getValue() * highestWins) > (this.value * highestWins)) {
+            return 1;
+        }
         else
-            if ((attribute.getValue() * highestWins) < (this.value * highestWins))
-                return this;
+            if ((attribute.getValue() * highestWins) < (this.value * highestWins)) {
+                return -1;
+            }
         else
-            return null;
+            return 0;
+    }
+    public boolean equals(Object attributeToVerify) {
+        Attribute attribute = (Attribute)attributeToVerify;
+        return this.name.equals(attribute.getName());
     }
 }

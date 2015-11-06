@@ -1,6 +1,10 @@
+Robin,fuerza,600,1,velocidad,600,-1,batallas,6000,1,poder,600,1
 superman,fuerza,100,1,velocidad,100,-1,batallas,1000,1,poder,100,1
 maravilla,fuerza,200,1,velocidad,200,-1,batallas,2000,1,poder,200,1
 batman,fuerza,300,1,velocidad,300,-1,batallas,3000,1,poder,300,1
 flash,fuerza,400,1,velocidad,400,-1,batallas,4000,1,poder,400,1
 Acuaman,fuerza,500,1,velocidad,500,-1,batallas,5000,1,poder,500,1
-Robin,fuerza,600,1,velocidad,600,-1,batallas,6000,1,poder,600,1
+Robin2,fuerza,600,1,velocidad,600,-1,batallas,6000,1,poder,600,1
+Robin3,fuerza,600,1,velocidad,600,-1,batallas,6000,1,poder,600,1
+flash4,fuerza,400,1,velocidad,400,-1,batallas,4000,1,poder,400,1,poder,400,1
+batman,fuerza,300,1,velocidad,300,-1,batallas,3000,1,poder,300,1

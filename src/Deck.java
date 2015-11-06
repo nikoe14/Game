@@ -16,10 +16,17 @@ public class Deck {
      * @param newCard: the new card of the deck.
      */
     public void addCard(Card newCard) {
-        if (validCard(newCard))
-            cards.add(0, newCard);
+        if (newCard != null) {
+            if (this.cards.size() > 0) {
+                Card baseCard = this.cards.get(0);
+                if (baseCard.equals(newCard)) {
+                    this.cards.add(newCard);
+                }
+            } else {
+                this.cards.add(newCard);
+            }
+        }
     }
-
     /**
      *
      * @param name: name of the new deck.
@@ -30,18 +37,15 @@ public class Deck {
         newCard.setName(name);
         newCard.setAttributtes(attributtes);
         attributesAmount = attributtes.size();
-        cards.add(newCard);
+        addCard(newCard);
     }
 
     /**
-     * Removes the last card and returns it.
      * @return: the last card of the deck.
      */
     public Card getCard() {
         if (!cards.isEmpty()) {
-            Card currentCard = cards.get(cards.size() - 1);
-            cards.remove(cards.get(cards.size() - 1));
-            return currentCard;
+            return cards.get(cards.size() - 1);
         }
         else
             return null;
@@ -81,14 +85,10 @@ public class Deck {
      * @param pos: attribute's posicion.
      * @return: attribute's name.
      */
-    public String getAttriuteName(int pos) {
+    public String getAttributeName(int pos) {
         return (cards.get(pos).getName());
     }
-/*
-    public void showCard(Card card) {
-        System.out.println("Cantidad de Atributos: " + card.getAttributesAmount());
-    }
-*/
+
     /**
      * Load cards from a file.
      * @param path: path of the file.
@@ -132,23 +132,6 @@ public class Deck {
     	return !error;
     }
 
-    public boolean check() {
-    	boolean aux = true;
-    	if (cards.size()>1) {
-    	    Card card = cards.get(0);
-    	    int cantAttr = card.getAttributesAmount();
-    	    ArrayList<Attribute> attr = card.getAttributes();
-    	    int i =1;
-    	    while (i<cards.size()&&(aux)){
-    		    if (!((cantAttr == cards.get(i).getAttributesAmount()) && (validAttributes(attr, cards.get(i).getAttributes()))))
-    			    aux = false;
-                i++;
-		        }
-            return aux;
-        } else
-		    return false;//1 card
-    }
-
     /**
      * This method controls the attributes' amount are correct.
      * @param card: card
@@ -164,18 +147,13 @@ public class Deck {
      * @param newCard
      * @return if the card is valid.
      */
-    private boolean validCard(Card newCard) {
-        if ((cards.size() == 0) && (validAttributesAmount(newCard)))
-            return true;
-        else {
-            int newCardAttributesAmount = newCard.getAttributesAmount();
-            int deckAttributesAmount = cards.get(0).getAttributesAmount();
-            if (validAttributesAmount(newCard)) {
-                return (newCardAttributesAmount == deckAttributesAmount);
-            }
-            else return false;
-        }
 
+    private boolean validCard(Card cardToVerify) {
+        if (!cards.isEmpty()) {
+            Card firstCard = cards.get(0);
+
+            return firstCard.equals(cardToVerify);
+        } else return true;
     }
 
 }
